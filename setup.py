@@ -7,7 +7,7 @@ arch, _ = platform.architecture()
 driver = None
 if system == 'Linux':
     if arch == '64bit':
-        driver = 'auspost/auspost.so'
+        driver = 'auspostgen/auspost.so'
 if driver is None:
     raise OSError('Could not find the binary file for the current platform.')
 
@@ -15,7 +15,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="auspost",
+    name="auspostgen",
     version="0.0.1",
     author="Damian Dennis",
     author_email="damiandennis@gmail.com",
@@ -25,11 +25,6 @@ setuptools.setup(
     url="https://github.com/damiandennis/auspost",
     packages=setuptools.find_packages(),
     include_package_data=True,
-    classifiers=[
-        "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
-        "Operating System :: Linux Only",
-    ],
     install_requires=[
         'pillow>=7.1.2,<7.2.0',
         'click>=7.1.2,<7.2.0'
@@ -38,6 +33,6 @@ setuptools.setup(
     python_requires='>=3.6',
     entry_points="""
     [console_scripts]
-    auspost-image=auspost:write_image
+    auspostgen-image=auspostgen:write_image
     """
 )
