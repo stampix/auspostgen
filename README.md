@@ -1,32 +1,62 @@
-# Australia Post Barcode Generator
+# AusPostGen
 
-A simple barcode generator currently only supporting x64 linux written for python.
+A Python library for generating Australia Post Barcode versions 37, 52, and 67.
 
-This library makes use of the provided C library provided by Australia Post to generate the barcode value 
-and Pillow is used to generate the barcode image. This is quite fast approx 10000 unique barcode images generated in 30 seconds.
+## Features
 
-### Installation
+- Generate Australia Post barcodes in various formats
+- Support for versions 37, 52, and 67
+- High-performance C extension for barcode generation
+- Simple Python API
+
+## Installation
+
 ```bash
-python -m pip install auspostgen
+# Using Poetry
+poetry add auspostgen
+
+# Using pip
+pip install auspostgen
 ```
 
-### Usage
-#### 
+## Usage
+
 ```python
-from auspostgen import build_barcode, write_barcode_to_image_file
+from auspostgen import write_image
 
-barcode = build_barcode('11', '59564391')
-write_barcode_to_image_file(barcode, './my-barcode37.png')
-barcode = build_barcode('59', '59564391', '11ABA')
-write_barcode_to_image_file(barcode, './my-barcode52.png')
-barcode = build_barcode('62', '59564391', '11ABA11ABA')
-write_barcode_to_image_file(barcode, './my-barcode67.png')
-
+# Generate a barcode image
+write_image("output.png", "12345678901234567890", version=37)
 ```
 
+## Development
 
-![Barcode37](my-barcode37.png)
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   poetry install
+   ```
+3. Run tests:
+   ```bash
+   poetry run pytest
+   ```
 
-![Barcode52](my-barcode52.png)
+## Project Structure
 
-![Barcode67](my-barcode67.png)
+```
+auspostgen/
+├── src/
+│   └── auspostgen/
+│       ├── __init__.py
+│       └── _c/
+│           ├── auspost.c
+│           └── Makefile
+├── tests/
+│   └── __init__.py
+├── docs/
+├── pyproject.toml
+└── README.md
+```
+
+## License
+
+MIT License - see LICENSE.txt for details

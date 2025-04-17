@@ -1,0 +1,60 @@
+{
+  "version_source": "pyproject",
+  "version_toml": "pyproject.toml:tool.poetry.version",
+  "commit_version_number": true,
+  "commit_subject": "chore(release): {version} [skip ci]",
+  "commit_message": "chore(release): {version} [skip ci]",
+  "tag_format": "v{version}",
+  "changelog_categories": [
+    "feat",
+    "fix",
+    "perf",
+    "refactor",
+    "docs",
+    "test",
+    "build",
+    "ci",
+    "chore"
+  ],
+  "changelog_sections": [
+    [
+      "feat",
+      "Features"
+    ],
+    [
+      "fix",
+      "Bug Fixes"
+    ],
+    [
+      "perf",
+      "Performance Improvements"
+    ],
+    [
+      "refactor",
+      "Code Refactoring"
+    ],
+    [
+      "docs",
+      "Documentation"
+    ],
+    [
+      "test",
+      "Tests"
+    ],
+    [
+      "build",
+      "Build System"
+    ],
+    [
+      "ci",
+      "Continuous Integration"
+    ],
+    [
+      "chore",
+      "Chores"
+    ]
+  ],
+  "changelog_excluded_commit_patterns": [
+    "^chore\\(release\\): .* \\[skip ci\\]$"
+  ]
+}

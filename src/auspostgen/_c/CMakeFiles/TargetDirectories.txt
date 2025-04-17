@@ -1,0 +1,7 @@
+/Users/jaro/Documents/stampix/dev/auspostgen/src/auspostgen/_c/CMakeFiles/auspost.dir
+/Users/jaro/Documents/stampix/dev/auspostgen/src/auspostgen/_c/CMakeFiles/edit_cache.dir
+/Users/jaro/Documents/stampix/dev/auspostgen/src/auspostgen/_c/CMakeFiles/rebuild_cache.dir
+/Users/jaro/Documents/stampix/dev/auspostgen/src/auspostgen/_c/CMakeFiles/list_install_components.dir
+/Users/jaro/Documents/stampix/dev/auspostgen/src/auspostgen/_c/CMakeFiles/install.dir
+/Users/jaro/Documents/stampix/dev/auspostgen/src/auspostgen/_c/CMakeFiles/install/local.dir
+/Users/jaro/Documents/stampix/dev/auspostgen/src/auspostgen/_c/CMakeFiles/install/strip.dir
