@@ -8,7 +8,6 @@ from io import BytesIO
 from typing import Any, Optional, Union
 
 import click
-
 from PIL import Image, ImageDraw
 
 # Configure logging
