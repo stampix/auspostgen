@@ -2,6 +2,21 @@
 
 
 
+## v0.0.3 (2025-04-17)
+
+### Ci
+
+* ci: merge branch &#39;main&#39; of github.com:stampix/auspostgen ([`d3bd3e9`](https://github.com/stampix/auspostgen/commit/d3bd3e910da33f6cb7f1d81915f7d2aba8cdaf74))
+
+### Fix
+
+* fix: add build files to gitignore ([`23101f2`](https://github.com/stampix/auspostgen/commit/23101f29b8311622460daf93f9359035d9b31779))
+
+### Unknown
+
+* Remove CMakeFiles from git tracking ([`fd56cd5`](https://github.com/stampix/auspostgen/commit/fd56cd5bd94267cdb8eb4b34f9b28d1f83e63a33))
+
+
 ## v0.0.2 (2025-04-17)
 
 ### Ci
