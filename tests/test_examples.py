@@ -1,7 +1,6 @@
 """Tests for the example barcodes from the original repository."""
 
 import os
-from pathlib import Path
 
 from auspostgen import build_barcode, write_barcode_to_image_file
 

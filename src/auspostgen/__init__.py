@@ -42,7 +42,8 @@ def build_barcode(
     Builds an Australia Post barcode based on the provided values.
 
     Args:
-        fcc_value: The FCC (Format Control Code) value. Must be one of "11", "59", or "62".
+        fcc_value: The FCC (Format Control Code) value. Must be one of "11", "59",
+            or "62".
         dpid_value: The DPID (Delivery Point Identifier) value. Must be 8 digits.
         customer_value: Optional customer value. If provided, must be a string.
 
@@ -81,7 +82,7 @@ def build_barcode(
         return result.value.decode("utf-8")
     except Exception as e:
         logger.error(f"Error generating barcode: {str(e)}")
-        raise AusPostError(f"Failed to generate barcode: {str(e)}")
+        raise AusPostError(f"Failed to generate barcode: {str(e)}") from e
 
 
 def write_barcode_to_image(barcode: str) -> Image.Image:
@@ -135,7 +136,7 @@ def write_barcode_to_image_file(barcode: str, out_file: str, **kwargs) -> None:
         logger.info(f"Barcode successfully saved to {out_file}")
     except Exception as e:
         logger.error(f"Error saving barcode to file: {str(e)}")
-        raise AusPostError(f"Failed to save barcode to file: {str(e)}")
+        raise AusPostError(f"Failed to save barcode to file: {str(e)}") from e
 
 
 def write_barcode_to_image_base64(barcode: str) -> str:
@@ -155,7 +156,7 @@ def write_barcode_to_image_base64(barcode: str) -> str:
         return base64.b64encode(buffered.getvalue()).decode("utf-8")
     except Exception as e:
         logger.error(f"Error converting barcode to base64: {str(e)}")
-        raise AusPostError(f"Failed to convert barcode to base64: {str(e)}")
+        raise AusPostError(f"Failed to convert barcode to base64: {str(e)}") from e
 
 
 @click.command()
@@ -200,7 +201,7 @@ def write_image(fcc: str, dpid: int, cust_no: str, save_to: str) -> None:
         write_barcode_to_image_file(barcode, save_to, dpi=(300, 300))
     except AusPostError as e:
         logger.error(f"Error generating barcode: {str(e)}")
-        raise click.ClickException(str(e))
+        raise click.ClickException(str(e)) from e
 
 
 if __name__ == "__main__":
