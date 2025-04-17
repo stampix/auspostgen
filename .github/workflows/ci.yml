@@ -55,6 +55,9 @@ jobs:
 
       - name: Build and install C extensions
         run: |
+          # Navigate to the C source directory
+          cd src/auspostgen/_c
+
           # Create build directory
           mkdir -p build
           cd build
@@ -67,14 +70,14 @@ jobs:
 
           # Install the built extension
           if [[ "${{ runner.os }}" == "Windows" ]]; then
-            cp Release/auspost.pyd ../src/auspostgen/_c/
+            cp Release/auspost.pyd ../
           elif [[ "${{ runner.os }}" == "macOS" ]]; then
-            cp libauspost.dylib ../src/auspostgen/_c/auspost.so
+            cp libauspost.dylib ../auspost.so
           else
-            cp libauspost.so ../src/auspostgen/_c/auspost.so
+            cp libauspost.so ../auspost.so
           fi
 
-          cd ..
+          cd ../../../
 
       - name: Run tests
         run: poetry run pytest
