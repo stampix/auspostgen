@@ -20,9 +20,6 @@ wheels/
 .installed.cfg
 *.egg
 
-# Poetry
-poetry.lock
-
 # Virtual Environment
 .env
 .venv
