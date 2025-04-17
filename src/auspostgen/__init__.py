@@ -5,7 +5,7 @@ import logging
 import os
 from ctypes import CDLL, byref, c_int, create_string_buffer
 from io import BytesIO
-from typing import Optional, Union
+from typing import Optional, Union, Any
 
 import click
 from PIL import Image, ImageDraw
@@ -121,7 +121,7 @@ def write_barcode_to_image(barcode: str) -> Image.Image:
     return img
 
 
-def write_barcode_to_image_file(barcode: str, out_file: str, **kwargs) -> None:
+def write_barcode_to_image_file(barcode: str, out_file: str, **kwargs: Any) -> None:
     """
     Saves the barcode to an image file.
 

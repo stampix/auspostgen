@@ -1,11 +1,12 @@
 """Tests for the example barcodes from the original repository."""
 
 import os
+from pathlib import Path
 
 from auspostgen import build_barcode, write_barcode_to_image_file
 
 
-def test_example_barcode37(tmp_path):
+def test_example_barcode37(tmp_path: Path) -> None:
     """Test generation of version 37 barcode."""
     output_path = tmp_path / "my-barcode37.png"
 
@@ -18,7 +19,7 @@ def test_example_barcode37(tmp_path):
     assert os.path.getsize(output_path) > 0
 
 
-def test_example_barcode52(tmp_path):
+def test_example_barcode52(tmp_path: Path) -> None:
     """Test generation of version 52 barcode."""
     output_path = tmp_path / "my-barcode52.png"
 
@@ -31,7 +32,7 @@ def test_example_barcode52(tmp_path):
     assert os.path.getsize(output_path) > 0
 
 
-def test_example_barcode67(tmp_path):
+def test_example_barcode67(tmp_path: Path) -> None:
     """Test generation of version 67 barcode."""
     output_path = tmp_path / "my-barcode67.png"
 
