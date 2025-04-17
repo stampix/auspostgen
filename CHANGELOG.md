@@ -2,6 +2,21 @@
 
 
 
+## v0.0.4 (2025-04-17)
+
+### Chore
+
+* chore: remove build files from git ([`5bb3168`](https://github.com/stampix/auspostgen/commit/5bb31683b41c747e4e4ab4292a6f3bb33cb18cf9))
+
+### Ci
+
+* ci: merge branch &#39;main&#39; of github.com:stampix/auspostgen ([`c1b5bc8`](https://github.com/stampix/auspostgen/commit/c1b5bc862dc74924fc24e6e3e3a2b93784dc000d))
+
+### Fix
+
+* fix: import sorting ([`d37c305`](https://github.com/stampix/auspostgen/commit/d37c3057357c5e0ce39b4f56b4120b2bc2573f5b))
+
+
 ## v0.0.3 (2025-04-17)
 
 ### Ci
