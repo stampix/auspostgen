@@ -59,6 +59,9 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Install CMake
+        uses: lukka/get-cmake@v3.25.1
+
       - name: Install Poetry
         uses: snok/install-poetry@v1
         with:
@@ -68,6 +71,45 @@ jobs:
 
       - name: Install dependencies
         run: poetry install --no-interaction
+
+      - name: Build and install C extensions
+        run: |
+          # Navigate to the C source directory
+          cd src/auspostgen/_c
+
+          # Clean up any existing build artifacts and cache
+          rm -rf build CMakeCache.txt CMakeFiles cmake_install.cmake
+
+          # Create and configure build directory
+          mkdir -p build
+          cd build
+
+          # Configure CMake
+          cmake .. -DCMAKE_BUILD_TYPE=Release -DPYTHON_EXECUTABLE=$(which python)
+
+          # Build
+          cmake --build . --config Release
+
+          # Install the built extension
+          if [[ "${{ runner.os }}" == "Windows" ]]; then
+            cp Release/auspost.pyd ../
+          else
+            cp auspost.so ../auspost.so
+          fi
+
+          cd ../../../
+
+      - name: Run tests
+        run: poetry run pytest
+
+      - name: Run linting
+        run: |
+          poetry run black --check .
+          poetry run isort --check .
+          poetry run ruff check .
+
+      - name: Run type checking
+        run: poetry run mypy .
 
       - name: Build package
         run: poetry build
