@@ -2,6 +2,33 @@
 
 
 
+## v0.0.2 (2025-04-17)
+
+### Ci
+
+* ci: add tests before releasing ([`67c26f0`](https://github.com/stampix/auspostgen/commit/67c26f03a9ab5be120e7d6c745e7af0834bb8fa6))
+
+* ci: fix black formatting ([`0ad101c`](https://github.com/stampix/auspostgen/commit/0ad101c213474ee9ebc24c6684d4ad13c9a5d71e))
+
+* ci: fix ([`fd69c10`](https://github.com/stampix/auspostgen/commit/fd69c103f590f0a3ae8c6b74c4906064402a60ed))
+
+* ci: fix ([`4994dc5`](https://github.com/stampix/auspostgen/commit/4994dc534e5cba7474a2deb4b74bf4644f29eec1))
+
+* ci: fix ([`846420b`](https://github.com/stampix/auspostgen/commit/846420b883e888b874f1feb47c6f761411be45c2))
+
+* ci: fix ([`0013c0d`](https://github.com/stampix/auspostgen/commit/0013c0d726c30d536a38d0c48a63a06494794c2e))
+
+### Fix
+
+* fix: package name ([`d022e6c`](https://github.com/stampix/auspostgen/commit/d022e6ca0f50b0a0942ec8c3969584c10030a0c7))
+
+* fix: typing ([`2b10bea`](https://github.com/stampix/auspostgen/commit/2b10bea69342fdfcc0c5c76b9d84411c5611c453))
+
+### Unknown
+
+* Merge pull request #3 from stampix/master ([`2915a21`](https://github.com/stampix/auspostgen/commit/2915a21554e7b955c3ad3f5e443ca5289bae40e3))
+
+
 ## v0.0.1 (2025-04-17)
 
 ### Ci
