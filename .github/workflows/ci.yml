@@ -71,14 +71,46 @@ jobs:
           # Build
           cmake --build . --config Release
 
+          # Debug: Show what files were built
+          echo "Built files in build directory:"
+          ls -la
+          if [[ "${{ runner.os }}" == "Windows" ]]; then
+            echo "Windows build files:"
+            ls -la Release/
+          fi
+
           # Install the built extension
           if [[ "${{ runner.os }}" == "Windows" ]]; then
             cp Release/auspost.pyd ../
           elif [[ "${{ runner.os }}" == "macOS" ]]; then
-            cp libauspost.dylib ../auspost.so
+            # Try different possible output names
+            if [ -f "libauspost.dylib" ]; then
+              cp libauspost.dylib ../auspost.so
+            elif [ -f "auspost.dylib" ]; then
+              cp auspost.dylib ../auspost.so
+            elif [ -f "auspost.so" ]; then
+              cp auspost.so ../auspost.so
+            else
+              echo "Error: Could not find the built library file"
+              ls -la
+              exit 1
+            fi
           else
-            cp libauspost.so ../auspost.so
+            # Try different possible output names
+            if [ -f "libauspost.so" ]; then
+              cp libauspost.so ../auspost.so
+            elif [ -f "auspost.so" ]; then
+              cp auspost.so ../auspost.so
+            else
+              echo "Error: Could not find the built library file"
+              ls -la
+              exit 1
+            fi
           fi
+
+          # Debug: Show final files
+          echo "Final files in _c directory:"
+          ls -la ..
 
           cd ../../../
 
