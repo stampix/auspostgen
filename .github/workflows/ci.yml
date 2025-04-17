@@ -53,12 +53,28 @@ jobs:
       - name: Install project
         run: poetry install --no-interaction
 
-      - name: Build C extensions
+      - name: Build and install C extensions
         run: |
-          cd src/auspostgen/_c
-          cmake -B build -DCMAKE_BUILD_TYPE=Release
-          cmake --build build --config Release
-          cd ../../../
+          # Create build directory
+          mkdir -p build
+          cd build
+
+          # Configure CMake
+          cmake .. -DCMAKE_BUILD_TYPE=Release -DPYTHON_EXECUTABLE=$(which python)
+
+          # Build
+          cmake --build . --config Release
+
+          # Install the built extension
+          if [[ "${{ runner.os }}" == "Windows" ]]; then
+            cp Release/auspost.pyd ../src/auspostgen/_c/
+          elif [[ "${{ runner.os }}" == "macOS" ]]; then
+            cp libauspost.dylib ../src/auspostgen/_c/auspost.so
+          else
+            cp libauspost.so ../src/auspostgen/_c/auspost.so
+          fi
+
+          cd ..
 
       - name: Run tests
         run: poetry run pytest
