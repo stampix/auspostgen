@@ -58,7 +58,10 @@ jobs:
           # Navigate to the C source directory
           cd src/auspostgen/_c
 
-          # Create build directory
+          # Clean up any existing build artifacts and cache
+          rm -rf build CMakeCache.txt CMakeFiles cmake_install.cmake
+
+          # Create and configure build directory
           mkdir -p build
           cd build
 
