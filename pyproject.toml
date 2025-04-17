@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "auspostgen"
+name = "stampix-auspostgen"
 version = "0.0.1"
 description = "Generation of the Australia Post Barcode versions 37, 52, 67"
 authors = ["Damian Dennis <damiandennis@gmail.com>", "Jaro Robberechts <jaro@stampix.com>"]
 readme = "README.md"
-packages = [{include = "auspostgen", from = "src"}]
+packages = [{include = "auspostgen"}]
 license = "MIT"
 repository = "https://github.com/damiandennis/auspost"
 classifiers = [
