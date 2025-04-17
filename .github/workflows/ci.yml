@@ -56,7 +56,7 @@ jobs:
       - name: Build and install C extensions
         run: |
           # Navigate to the C source directory
-          cd src/auspostgen/_c
+          cd auspostgen/_c
 
           # Clean up any existing build artifacts and cache
           rm -rf build CMakeCache.txt CMakeFiles cmake_install.cmake
@@ -156,7 +156,7 @@ jobs:
       - name: Build and install C extensions
         run: |
           # Navigate to the C source directory
-          cd src/auspostgen/_c
+          cd auspostgen/_c
 
           # Clean up any existing build artifacts and cache
           rm -rf build CMakeCache.txt CMakeFiles cmake_install.cmake

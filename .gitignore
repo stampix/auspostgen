@@ -1,3 +1,13 @@
+# CMake build files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+*.cmake
+*.ninja
+*.ninja_deps
+*.ninja_log
+
 # Python
 __pycache__/
 *.py[cod]
@@ -35,6 +45,7 @@ ENV/
 
 # OS
 .DS_Store
+Thumbs.db
 
 auspostgen.egg-info/
 
