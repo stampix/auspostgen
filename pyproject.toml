@@ -46,6 +46,8 @@ python-semantic-release = "^8.0.0"
 line-length = 88
 target-version = ['py310']
 include = '\.pyi?$'
+skip-string-normalization = false
+preview = true
 
 [tool.isort]
 profile = "black"

@@ -5,9 +5,10 @@ import logging
 import os
 from ctypes import CDLL, byref, c_int, create_string_buffer
 from io import BytesIO
-from typing import Optional, Union, Any
+from typing import Any, Optional, Union
 
 import click
+
 from PIL import Image, ImageDraw
 
 # Configure logging

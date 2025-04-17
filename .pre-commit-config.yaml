@@ -6,10 +6,11 @@ repos:
       - id: check-added-large-files
 
   - repo: https://github.com/psf/black
-    rev: 23.7.0
+    rev: 24.3.0
     hooks:
       - id: black
         language_version: python3.10
+        args: [--preview]
 
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: v1.7.1
