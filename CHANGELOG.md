@@ -2,6 +2,39 @@
 
 
 
+## v0.0.8 (2025-04-18)
+
+### Chore
+
+* chore: merge branch &#39;main&#39; of github.com:stampix/auspostgen ([`0b0af56`](https://github.com/stampix/auspostgen/commit/0b0af560ce8c7211d4b4913c4e335180a564f769))
+
+### Ci
+
+* ci: add debugging ([`fd88b1c`](https://github.com/stampix/auspostgen/commit/fd88b1c46236c8b966df3e45e7bb095a01345784))
+
+* ci: add debugging ([`38962b6`](https://github.com/stampix/auspostgen/commit/38962b653adcf05abbd92fb8c8c2e09c0b0edc24))
+
+* ci: fix can&#39;t find zip files ([`d50a963`](https://github.com/stampix/auspostgen/commit/d50a96381a0b3917cc3efc9816d4839d02328711))
+
+* ci: fix zip extraction ([`70f52be`](https://github.com/stampix/auspostgen/commit/70f52be96e7df24bd444ecccd66e276fe490b4ad))
+
+* ci: try unzipping wheels before releasing ([`5651839`](https://github.com/stampix/auspostgen/commit/565183973f172f5584f87ba921942bec02e88ef9))
+
+* ci: grr accidental change ([`f96c675`](https://github.com/stampix/auspostgen/commit/f96c6755397456b5f5575ebd4ebeaa7cc7025ff0))
+
+* ci: fix x-platform wheel building ([`a3d3e25`](https://github.com/stampix/auspostgen/commit/a3d3e2534e37e4b2de3cd0382989eb835a8ef051))
+
+* ci: fix outdated actions ([`dc0fc8d`](https://github.com/stampix/auspostgen/commit/dc0fc8def6bddbaf824a115010d0f1e919baa548))
+
+### Documentation
+
+* docs: bump version number ([`120cda7`](https://github.com/stampix/auspostgen/commit/120cda72f3f4d4ebe824685c87e8e77f443ce3e7))
+
+### Fix
+
+* fix: they were not zipped after all... ([`ce2ae1f`](https://github.com/stampix/auspostgen/commit/ce2ae1f75eafc78e123378bc38220e97b2f75f99))
+
+
 ## v0.0.7 (2025-04-18)
 
 ### Documentation
