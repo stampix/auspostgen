@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "stampix-auspostgen"
-version = "0.0.6"
+version = "0.0.7"
 description = "Generation of the Australia Post Barcode versions 37, 52, 67"
 authors = ["Damian Dennis <damiandennis@gmail.com>", "Jaro Robberechts <jaro@stampix.com>"]
 readme = "README.md"
@@ -12,7 +12,7 @@ build-backend = "scikit_build_core.build"
 
 [project]
 name = "stampix-auspostgen"
-version = "0.0.6"
+version = "0.0.7"
 description = "Generation of the Australia Post Barcode versions 37, 52, 67"
 authors = [
     {name = "Damian Dennis", email = "damiandennis@gmail.com"},
