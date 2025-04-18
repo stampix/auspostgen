@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "stampix-auspostgen"
-version = "0.0.1"
+version = "0.0.6"
 description = "Generation of the Australia Post Barcode versions 37, 52, 67"
 authors = ["Damian Dennis <damiandennis@gmail.com>", "Jaro Robberechts <jaro@stampix.com>"]
 readme = "README.md"
@@ -17,7 +17,7 @@ classifiers = [
 name = "stampix-auspostgen"
 readme = "README.md"
 requires-python = ">=3.10"
-version = "0.0.1"
+version = "0.0.6"
 
 [tool.semantic_release]
 version_toml = [
