@@ -210,10 +210,10 @@ jobs:
           pip install dist/*.whl
 
           # Verify the package can be imported
-          python -c "import auspostgen"
+          python -c "import stampix.auspostgen"
 
           # Run basic functionality test
-          python -c "from auspostgen import write_image; print('Package imports and basic functionality verified')"
+          python -c "from stampix.auspostgen.generator import write_image; print('Package imports and basic functionality verified')"
 
           deactivate
 
