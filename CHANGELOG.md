@@ -2,6 +2,17 @@
 
 
 
+## v0.0.10 (2025-04-18)
+
+### Chore
+
+* chore: merge branch &#39;main&#39; of github.com:stampix/auspostgen ([`67cc6f0`](https://github.com/stampix/auspostgen/commit/67cc6f0a53847fde7dce20420e535307a3932585))
+
+### Fix
+
+* fix: provide cibuildhweel config ([`4c47cbf`](https://github.com/stampix/auspostgen/commit/4c47cbf1ed35677cce7c1cd685402718777635b8))
+
+
 ## v0.0.9 (2025-04-18)
 
 ### Chore
