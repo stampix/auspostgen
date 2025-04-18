@@ -133,7 +133,14 @@ def write_barcode_to_image_file(barcode: str, out_file: str, **kwargs: Any) -> N
     try:
         print(f"Writing barcode to image file: {out_file}")
         img = write_barcode_to_image(barcode)
-        img.save(out_file, **kwargs)
+        # Use consistent PNG compression settings
+        save_kwargs: dict[str, Any] = {
+            "format": "PNG",
+            "optimize": True,
+            "compress_level": 6,  # Default compression level
+        }
+        save_kwargs.update(kwargs)
+        img.save(out_file, **save_kwargs)
         print(f"Barcode successfully saved to {out_file}")
         logger.info(f"Barcode successfully saved to {out_file}")
     except Exception as e:
