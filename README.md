@@ -44,11 +44,13 @@ write_image("output.png", "12345678901234567890", version=37)
 
 ```
 auspostgen/
-├── src/
+├── stampix/
 │   ├── __init__.py
-│   └── _c/
-│       ├── auspost.c
-│       └── Makefile
+│   └── auspostgen/
+│       └── _c/
+│           ├── __init__.py
+│           ├── auspost.c
+│           └── Makefile
 ├── tests/
 │   └── __init__.py
 ├── docs/

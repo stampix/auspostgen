@@ -53,7 +53,7 @@ jobs:
 
       - name: Build and install C extensions
         run: |
-          cd src/_c
+          cd stampix/auspostgen/_c
 
           # Create and configure build directory
           mkdir -p build
@@ -92,7 +92,7 @@ jobs:
             fi
           fi
 
-          cd ../../../
+          cd ../../../../
 
       - name: Run tests
         run: poetry run pytest

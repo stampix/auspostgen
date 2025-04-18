@@ -4,6 +4,10 @@ project(auspost)
 # Find Python
 find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
 
+# Add gettext library path
+set(GETTEXT_ROOT "/opt/homebrew/opt/gettext")
+set(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} ${GETTEXT_ROOT}/lib)
+
 # Set C standard
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
@@ -22,8 +26,9 @@ set_target_properties(auspost PROPERTIES
     OUTPUT_NAME "auspost"
 )
 
-# Link against Python
+# Link against Python and gettext
 target_link_libraries(auspost PRIVATE Python3::Python)
+target_link_directories(auspost PRIVATE ${GETTEXT_ROOT}/lib)
 
 # Set include directories
 target_include_directories(auspost PRIVATE

@@ -3,7 +3,7 @@
 import os
 from pathlib import Path
 
-from src import build_barcode, write_barcode_to_image_file
+from stampix.auspostgen.generator import build_barcode, write_barcode_to_image_file
 
 
 def test_example_barcode37(tmp_path: Path) -> None:

@@ -131,8 +131,10 @@ def write_barcode_to_image_file(barcode: str, out_file: str, **kwargs: Any) -> N
         **kwargs: Additional arguments passed to PIL.Image.save()
     """
     try:
+        print(f"Writing barcode to image file: {out_file}")
         img = write_barcode_to_image(barcode)
         img.save(out_file, **kwargs)
+        print(f"Barcode successfully saved to {out_file}")
         logger.info(f"Barcode successfully saved to {out_file}")
     except Exception as e:
         logger.error(f"Error saving barcode to file: {str(e)}")

@@ -4,14 +4,33 @@ version = "0.0.1"
 description = "Generation of the Australia Post Barcode versions 37, 52, 67"
 authors = ["Damian Dennis <damiandennis@gmail.com>", "Jaro Robberechts <jaro@stampix.com>"]
 readme = "README.md"
-packages = [{include = "src"}]
+packages = [{include = "stampix"}]
 license = "MIT"
-repository = "https://github.com/damiandennis/auspost"
+repository = "https://github.com/stampix/auspostgen"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
+
+[project]
+name = "stampix-auspostgen"
+readme = "README.md"
+requires-python = ">=3.10"
+version = "0.0.1"
+
+[tool.semantic_release]
+version_toml = [
+    "pyproject.toml:tool.poetry.version:nf",
+    "pyproject.toml:project.version:nf"
+]
+version_variables = [
+    "stampix/auspostgen/__init__.py:__version__:nf",
+]
+branch = "main"
+upload_to_pypi = false
+upload_to_release = true
+build_command = "poetry build"
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -23,15 +42,15 @@ pre-commit = "^4.2.0"
 auspostgen-image = "auspostgen:write_image"
 
 [build-system]
-requires = ["scikit-build-core>=0.8.0", "cmake>=3.26", "ninja"]
+requires = ["scikit-build-core>=0.5.0"]
 build-backend = "scikit_build_core.build"
 
 [tool.scikit-build]
-cmake.minimum-version = "3.26"
-cmake.source-dir = "src/_c"
+cmake.version = ">=3.26"
+cmake.source-dir = "stampix/auspostgen/_c"
 cmake.build-type = "Release"
-cmake.verbose = true
-wheel.packages = ["src"]
+build.verbose = true
+wheel.packages = ["stampix/auspostgen"]
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.0"
