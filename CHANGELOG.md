@@ -2,6 +2,21 @@
 
 
 
+## v0.0.9 (2025-04-18)
+
+### Chore
+
+* chore: merge branch &#39;main&#39; of github.com:stampix/auspostgen ([`3633e92`](https://github.com/stampix/auspostgen/commit/3633e9216665854d7bd44e9658ce9fcdcc6ae5b0))
+
+### Ci
+
+* ci: fix can&#39;t verify because platform wheels ([`ae9f680`](https://github.com/stampix/auspostgen/commit/ae9f6807bb0eff1e4f3d40421f6e02175a230ec0))
+
+### Fix
+
+* fix: build using cibuildwheel to get manylinux wheel ([`1aea0cf`](https://github.com/stampix/auspostgen/commit/1aea0cf754238176e31973e4e3cf25cfc3be8b80))
+
+
 ## v0.0.8 (2025-04-18)
 
 ### Chore
