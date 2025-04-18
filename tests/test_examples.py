@@ -9,7 +9,7 @@ from stampix.auspostgen.generator import build_barcode, write_barcode_to_image_f
 def test_example_barcode37(tmp_path: Path) -> None:
     """Test generation of version 37 barcode."""
     output_path = tmp_path / "barcode37.png"
-    example_path = Path("examples/barcode37.png")
+    # example_path = Path("examples/barcode37.png")
 
     # Generate the barcode
     barcode = build_barcode("11", "59564391")
@@ -28,7 +28,7 @@ def test_example_barcode37(tmp_path: Path) -> None:
 def test_example_barcode59(tmp_path: Path) -> None:
     """Test generation of version 59 barcode."""
     output_path = tmp_path / "barcode59.png"
-    example_path = Path("examples/barcode59.png")
+    # example_path = Path("examples/barcode59.png")
 
     # Generate the barcode
     barcode = build_barcode("59", "59564391", "11ABA")
@@ -47,7 +47,7 @@ def test_example_barcode59(tmp_path: Path) -> None:
 def test_example_barcode59_2(tmp_path: Path) -> None:
     """Test generation of version 59 barcode."""
     output_path = tmp_path / "barcode59-2.png"
-    example_path = Path("examples/barcode59-2.png")
+    # example_path = Path("examples/barcode59-2.png")
 
     # Generate the barcode
     barcode = build_barcode("59", "56439111", "ABA 9")
@@ -66,7 +66,7 @@ def test_example_barcode59_2(tmp_path: Path) -> None:
 def test_example_barcode62(tmp_path: Path) -> None:
     """Test generation of version 62 barcode."""
     output_path = tmp_path / "barcode62.png"
-    example_path = Path("examples/barcode62.png")
+    # example_path = Path("examples/barcode62.png")
 
     # Generate the barcode
     barcode = build_barcode("62", "59564391", "11ABA11ABA")
