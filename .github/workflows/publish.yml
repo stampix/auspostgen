@@ -234,7 +234,7 @@ jobs:
           mkdir -p extracted_wheels
 
           # Extract all wheels from the downloaded artifacts
-          for zip in wheels/*.zip; do
+          for zip in **/*.zip; do
             unzip -j "$zip" "*.whl" -d extracted_wheels/
           done
 
