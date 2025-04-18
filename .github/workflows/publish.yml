@@ -233,7 +233,7 @@ jobs:
           # Create a directory for extracted wheels
           mkdir -p extracted_wheels
 
-          ls *.whl
+          find . -name *.whl
 
           # Extract all wheels from the downloaded artifacts
           for zip in **/wheels-*; do
