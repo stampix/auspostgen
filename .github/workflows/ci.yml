@@ -31,11 +31,11 @@ jobs:
           echo "C:\Program Files\ninja" >> $GITHUB_PATH
 
       - name: Install Poetry
-        uses: snok/install-poetry@v1
+        uses: abatilo/actions-poetry@v3
         with:
-          version: 1.8.0
-          virtualenvs-create: true
-          virtualenvs-in-project: true
+          poetry-version: 1.8.0
+      - name: Configure Poetry
+        run: poetry config virtualenvs.in-project true
 
       - name: Load cached venv
         id: cached-poetry-dependencies
