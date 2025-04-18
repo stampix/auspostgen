@@ -2,6 +2,17 @@
 
 
 
+## v0.0.7 (2025-04-18)
+
+### Documentation
+
+* docs: update readme &amp; version numbers ([`e12b640`](https://github.com/stampix/auspostgen/commit/e12b640cb7e9413ab0969e43f1d0930fa082788c))
+
+### Fix
+
+* fix: building x-platform ([`d5876bc`](https://github.com/stampix/auspostgen/commit/d5876bcb9a09d42fcb18b587b973c7a2c7ee1f14))
+
+
 ## v0.0.6 (2025-04-18)
 
 ### Fix
