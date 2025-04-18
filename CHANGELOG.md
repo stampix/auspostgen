@@ -2,6 +2,17 @@
 
 
 
+## v0.0.6 (2025-04-18)
+
+### Fix
+
+* fix: pypi publishing ([`ee7faa9`](https://github.com/stampix/auspostgen/commit/ee7faa9dca1dac9e82ecc3e490ab10512a64c038))
+
+### Unknown
+
+* Merge branch &#39;main&#39; of github.com:stampix/auspostgen ([`24499c7`](https://github.com/stampix/auspostgen/commit/24499c7a8a0e2b23942a957580ade09dcd8f85b9))
+
+
 ## v0.0.5 (2025-04-18)
 
 ### Ci
