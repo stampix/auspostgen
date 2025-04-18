@@ -68,34 +68,18 @@ jobs:
           # Configure CMake
           cmake .. -DCMAKE_BUILD_TYPE=Release -DPYTHON_EXECUTABLE=$(which python)
 
+          # Build
           cmake --build . --config Release
 
+          # Install the built extension
           if [[ "${{ runner.os }}" == "Windows" ]]; then
             cp Release/auspost.pyd ../
           elif [[ "${{ runner.os }}" == "macOS" ]]; then
-            # Try different possible output names
-            if [ -f "libauspost.dylib" ]; then
-              cp libauspost.dylib ../auspost.so
-            elif [ -f "auspost.dylib" ]; then
-              cp auspost.dylib ../auspost.so
-            elif [ -f "auspost.so" ]; then
-              cp auspost.so ../auspost.so
-            else
-              echo "Error: Could not find the built library file"
-              ls -la
-              exit 1
-            fi
+            # On macOS, CMake typically generates a .dylib file
+            cp libauspost.dylib ../auspost.so
           else
-            # Try different possible output names
-            if [ -f "libauspost.so" ]; then
-              cp libauspost.so ../auspost.so
-            elif [ -f "auspost.so" ]; then
-              cp auspost.so ../auspost.so
-            else
-              echo "Error: Could not find the built library file"
-              ls -la
-              exit 1
-            fi
+            # On Linux, CMake typically generates a .so file
+            cp libauspost.so ../auspost.so
           fi
 
           cd ../../../../
@@ -212,7 +196,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: wheels-${{ matrix.os }}
-          path: "dist/*.whl"
+          path: "**/*.whl"
 
   publish:
     needs: deploy
@@ -223,7 +207,7 @@ jobs:
       - name: Download all wheels
         uses: actions/download-artifact@v4
         with:
-          path: dist
+          path: "**/*.whl"
 
       - name: Verify wheels
         run: |
@@ -232,7 +216,7 @@ jobs:
           source venv/bin/activate
 
           # Install each wheel and verify it works
-          for wheel in dist/*.whl; do
+          for wheel in $(find . -name "*.whl"); do
             echo "Testing wheel: $wheel"
             pip install "$wheel"
             python -c "import stampix.auspostgen"
