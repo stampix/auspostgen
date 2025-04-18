@@ -228,18 +228,6 @@ jobs:
           path: wheels
           merge-multiple: true
 
-      - name: Extract wheels
-        run: |
-          # Create a directory for extracted wheels
-          mkdir -p extracted_wheels
-
-          find . -name *.whl
-
-          # Extract all wheels from the downloaded artifacts
-          for zip in **/wheels-*; do
-            unzip -j "$zip" "*.whl" -d extracted_wheels/
-          done
-
       - name: Verify wheels
         run: |
           # Create a clean virtual environment
@@ -247,7 +235,7 @@ jobs:
           source venv/bin/activate
 
           # Install each wheel and verify it works
-          for wheel in $(find extracted_wheels -name "*.whl"); do
+          for wheel in $(find wheels -name "*.whl"); do
             echo "Testing wheel: $wheel"
             pip install "$wheel"
             python -c "import stampix.auspostgen"
