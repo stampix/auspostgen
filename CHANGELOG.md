@@ -2,6 +2,39 @@
 
 
 
+## v0.0.5 (2025-04-18)
+
+### Ci
+
+* ci: remove windows support ([`dec3aef`](https://github.com/stampix/auspostgen/commit/dec3aefa6070b2c412517d3839fd9a1bfb76a16e))
+
+* ci: merge branch &#39;main&#39; of github.com:stampix/auspostgen ([`3cbf25d`](https://github.com/stampix/auspostgen/commit/3cbf25d5d831a3d52a38149428c9692202bf1dc6))
+
+* ci: try fixing import linting ([`eddaa9b`](https://github.com/stampix/auspostgen/commit/eddaa9b3d22e722fd8b017c817817bd7a1b9d7db))
+
+### Fix
+
+* fix: unused variable ([`dcd1327`](https://github.com/stampix/auspostgen/commit/dcd13277be243ae15fbf018c342844294061beb5))
+
+* fix: image compression ([`d093711`](https://github.com/stampix/auspostgen/commit/d0937112d5bc2466560b3448e4d6f39a0a84c906))
+
+* fix: character encoding ([`ca79c94`](https://github.com/stampix/auspostgen/commit/ca79c943d95fb50c26761decc463579ac91eb05e))
+
+* fix: tests ([`28469ec`](https://github.com/stampix/auspostgen/commit/28469ec9a2f4bd25c0cc94c9f46d90a10019d663))
+
+* fix: image comporession ([`9b095bc`](https://github.com/stampix/auspostgen/commit/9b095bca276b574627de5204098d1028e11a1f53))
+
+* fix: make sure the package is installable and runs ([`0a9b139`](https://github.com/stampix/auspostgen/commit/0a9b1398ab5a47a162117137db90bffc2aee3055))
+
+### Refactor
+
+* refactor: cleanup messy ai code ([`f7ab451`](https://github.com/stampix/auspostgen/commit/f7ab451ece83791105c6eb258197cc86bac844e1))
+
+### Test
+
+* test: remove file comparison tests for now ([`db042d2`](https://github.com/stampix/auspostgen/commit/db042d21dabe7d93d60506a8d484e07cf546e280))
+
+
 ## v0.0.4 (2025-04-17)
 
 ### Chore
