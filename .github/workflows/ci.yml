@@ -1,8 +1,6 @@
 name: CI
 
 on:
-  push:
-    branches: [main]
   pull_request:
     branches: [main]
 
@@ -13,7 +11,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]
-        python-version: ["3.9", "3.10", "3.11"]
+        python-version: ["3.10", "3.11"]
 
     steps:
       - uses: actions/checkout@v4
@@ -55,11 +53,7 @@ jobs:
 
       - name: Build and install C extensions
         run: |
-          # Navigate to the C source directory
-          cd auspostgen/_c
-
-          # Clean up any existing build artifacts and cache
-          rm -rf build CMakeCache.txt CMakeFiles cmake_install.cmake
+          cd src/_c
 
           # Create and configure build directory
           mkdir -p build
@@ -68,18 +62,8 @@ jobs:
           # Configure CMake
           cmake .. -DCMAKE_BUILD_TYPE=Release -DPYTHON_EXECUTABLE=$(which python)
 
-          # Build
           cmake --build . --config Release
 
-          # Debug: Show what files were built
-          echo "Built files in build directory:"
-          ls -la
-          if [[ "${{ runner.os }}" == "Windows" ]]; then
-            echo "Windows build files:"
-            ls -la Release/
-          fi
-
-          # Install the built extension
           if [[ "${{ runner.os }}" == "Windows" ]]; then
             cp Release/auspost.pyd ../
           elif [[ "${{ runner.os }}" == "macOS" ]]; then
@@ -108,10 +92,6 @@ jobs:
             fi
           fi
 
-          # Debug: Show final files
-          echo "Final files in _c directory:"
-          ls -la ..
-
           cd ../../../
 
       - name: Run tests
@@ -125,106 +105,3 @@ jobs:
 
       - name: Run type checking
         run: poetry run mypy .
-
-  build:
-    name: Build C extensions
-    runs-on: ubuntu-latest
-    needs: test
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: Install CMake
-        uses: lukka/get-cmake@v3.25.1
-
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
-        with:
-          version: 1.8.0
-          virtualenvs-create: true
-          virtualenvs-in-project: true
-
-      - name: Install dependencies
-        run: poetry install --no-interaction
-
-      - name: Build and install C extensions
-        run: |
-          # Navigate to the C source directory
-          cd auspostgen/_c
-
-          # Clean up any existing build artifacts and cache
-          rm -rf build CMakeCache.txt CMakeFiles cmake_install.cmake
-
-          # Create and configure build directory
-          mkdir -p build
-          cd build
-
-          # Configure CMake
-          cmake .. -DCMAKE_BUILD_TYPE=Release -DPYTHON_EXECUTABLE=$(which python)
-
-          # Build
-          cmake --build . --config Release
-
-          # Debug: Show what files were built
-          echo "Built files in build directory:"
-          ls -la
-          if [[ "${{ runner.os }}" == "Windows" ]]; then
-            echo "Windows build files:"
-            ls -la Release/
-          fi
-
-          # Install the built extension
-          if [[ "${{ runner.os }}" == "Windows" ]]; then
-            cp Release/auspost.pyd ../
-          elif [[ "${{ runner.os }}" == "macOS" ]]; then
-            # Try different possible output names
-            if [ -f "libauspost.dylib" ]; then
-              cp libauspost.dylib ../auspost.so
-            elif [ -f "auspost.dylib" ]; then
-              cp auspost.dylib ../auspost.so
-            elif [ -f "auspost.so" ]; then
-              cp auspost.so ../auspost.so
-            else
-              echo "Error: Could not find the built library file"
-              ls -la
-              exit 1
-            fi
-          else
-            # Try different possible output names
-            if [ -f "libauspost.so" ]; then
-              cp libauspost.so ../auspost.so
-            elif [ -f "auspost.so" ]; then
-              cp auspost.so ../auspost.so
-            else
-              echo "Error: Could not find the built library file"
-              ls -la
-              exit 1
-            fi
-          fi
-
-          # Debug: Show final files
-          echo "Final files in _c directory:"
-          ls -la ..
-
-          cd ../../../
-
-      - name: Run tests
-        run: poetry run pytest
-
-      - name: Run linting
-        run: |
-          poetry run black --check .
-          poetry run isort --check .
-          poetry run ruff check .
-
-      - name: Run type checking
-        run: poetry run mypy .
-
-      - name: Build package
-        run: poetry build

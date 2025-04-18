@@ -3,7 +3,7 @@
 import os
 from pathlib import Path
 
-from auspostgen import build_barcode, write_barcode_to_image_file
+from src import build_barcode, write_barcode_to_image_file
 
 
 def test_barcode_generation(tmp_path: Path) -> None:

@@ -623,9 +623,6 @@ int BuildBarcode37(
         if (bcstat == BC_OK)
                 bcstat = AppendRSParity (sBarcode, 37);
 
-        if (bcstat == BC_OK)
-                bcstat = ConvertB (sBarcode, 36, 37, BC_STOP_SYM);
-
         return bcstat;
 }
 

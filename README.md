@@ -45,11 +45,10 @@ write_image("output.png", "12345678901234567890", version=37)
 ```
 auspostgen/
 ├── src/
-│   └── auspostgen/
-│       ├── __init__.py
-│       └── _c/
-│           ├── auspost.c
-│           └── Makefile
+│   ├── __init__.py
+│   └── _c/
+│       ├── auspost.c
+│       └── Makefile
 ├── tests/
 │   └── __init__.py
 ├── docs/
