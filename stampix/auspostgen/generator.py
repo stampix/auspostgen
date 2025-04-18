@@ -103,7 +103,8 @@ def write_barcode_to_image(barcode: str) -> Image.Image:
     total_height = h_padding * 2 + tad_height
     total_width = x_padding * 2 + bar_width * 2 * bar_qty
 
-    img = Image.new("RGB", (total_width, total_height), color="white")
+    # Create image with explicit white background
+    img = Image.new("RGB", (total_width, total_height), color=(255, 255, 255))
     d = ImageDraw.Draw(img)
 
     line_types = {"0": (0, 0), "1": (0, 16), "2": (16, 0), "3": (16, 16)}
@@ -114,7 +115,7 @@ def write_barcode_to_image(barcode: str) -> Image.Image:
         d.line(
             (h_start, h_padding + offset_t)
             + (h_start, total_height - h_padding - offset_b),
-            fill=256,
+            fill=(0, 0, 0),  # Black color for bars
             width=bar_width,
         )
 
