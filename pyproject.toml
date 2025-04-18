@@ -5,19 +5,26 @@ description = "Generation of the Australia Post Barcode versions 37, 52, 67"
 authors = ["Damian Dennis <damiandennis@gmail.com>", "Jaro Robberechts <jaro@stampix.com>"]
 readme = "README.md"
 packages = [{include = "stampix"}]
-license = "MIT"
-repository = "https://github.com/stampix/auspostgen"
-classifiers = [
-    "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent",
-]
+
+[build-system]
+requires = ["scikit-build-core>=0.5.0"]
+build-backend = "scikit_build_core.build"
 
 [project]
 name = "stampix-auspostgen"
-readme = "README.md"
-requires-python = ">=3.10"
 version = "0.0.6"
+description = "Generation of the Australia Post Barcode versions 37, 52, 67"
+authors = [
+    {name = "Damian Dennis", email = "damiandennis@gmail.com"},
+    {name = "Jaro Robberechts", email = "jaro@stampix.com"}
+]
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
 
 [tool.semantic_release]
 version_toml = [
@@ -30,7 +37,7 @@ version_variables = [
 branch = "main"
 upload_to_pypi = false
 upload_to_release = true
-build_command = "poetry build"
+build_command = "python -m pip wheel . -v"
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -39,18 +46,18 @@ click = "8.1.8"
 pre-commit = "^4.2.0"
 
 [tool.poetry.scripts]
-auspostgen-image = "auspostgen:write_image"
-
-[build-system]
-requires = ["scikit-build-core>=0.5.0"]
-build-backend = "scikit_build_core.build"
+auspostgen-image = "stampix.auspostgen:write_image"
 
 [tool.scikit-build]
-cmake.version = ">=3.26"
+cmake.version = ">=3.15"
 cmake.source-dir = "stampix/auspostgen/_c"
 cmake.build-type = "Release"
 build.verbose = true
-wheel.packages = ["stampix/auspostgen"]
+wheel.packages = ["stampix"]
+wheel.cmake = true
+wheel.py-api = "cp310"  # Target Python 3.10+ ABI
+wheel.install-dir = "stampix/auspostgen/_c"  # Install relative to the package root
+wheel.platlib = true  # Enable platform-specific library
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.0"

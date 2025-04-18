@@ -152,14 +152,24 @@ jobs:
 
   deploy:
     needs: semantic-release
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python-version: ["3.10"]
+        include:
+          - os: ubuntu-latest
+            platform: manylinux_2_28_x86_64
+          - os: macos-latest
+            platform: macosx_15_0_arm64
+
     steps:
       - uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.10"
+          python-version: ${{ matrix.python-version }}
 
       - name: Install CMake
         uses: lukka/get-cmake@v3.25.1
@@ -189,16 +199,31 @@ jobs:
           cmake --build . --config Release
 
           # Install the built extension
-          if [[ "${{ runner.os }}" == "Windows" ]]; then
-            cp Release/auspost.pyd ../
-          else
-            cp auspost.so ../auspost.so
-          fi
+          cp auspost.so ../auspost.so
 
           cd ../../../../
 
-      - name: Build package
-        run: poetry build
+      - name: Build wheel
+        run: |
+          # Build the wheel
+          python -m pip wheel . -v
+
+      - name: Upload wheels
+        uses: actions/upload-artifact@v3
+        with:
+          name: wheels-${{ matrix.os }}
+          path: "dist/*.whl"
+
+  publish:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download all wheels
+        uses: actions/download-artifact@v3
+        with:
+          path: dist
 
       - name: Verify wheels
         run: |
@@ -206,14 +231,13 @@ jobs:
           python -m venv venv
           source venv/bin/activate
 
-          # Install the wheel
-          pip install dist/*.whl
-
-          # Verify the package can be imported
-          python -c "import stampix.auspostgen"
-
-          # Run basic functionality test
-          python -c "from stampix.auspostgen.generator import write_image; print('Package imports and basic functionality verified')"
+          # Install each wheel and verify it works
+          for wheel in dist/*.whl; do
+            echo "Testing wheel: $wheel"
+            pip install "$wheel"
+            python -c "import stampix.auspostgen"
+            python -c "from stampix.auspostgen.generator import write_image; print('Package imports and basic functionality verified')"
+          done
 
           deactivate
 
@@ -221,3 +245,4 @@ jobs:
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           repository-url: https://upload.pypi.org/legacy/
+          packages-dir: dist
