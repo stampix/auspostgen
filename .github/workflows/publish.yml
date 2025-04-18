@@ -173,10 +173,12 @@ jobs:
 
       - name: Build wheels
         run: python -m cibuildwheel --output-dir wheelhouse
-        # to supply options, put them in 'env', like:
-        # env:
-        #   CIBW_SOME_OPTION: value
-        #   ...
+        env:
+          CIBW_ENVIRONMENT_MACOS: "MACOSX_DEPLOYMENT_TARGET=11.0"
+          CIBW_BEFORE_BUILD_MACOS: "pip install delocate"
+          CIBW_REPAIR_WHEEL_COMMAND_MACOS: "delocate-wheel --require-archs arm64 -w {dest_dir} -v {wheel}"
+          CIBW_ENVIRONMENT_MANYLINUX: "AUDITWHEEL_PLAT=manylinux_2_28_x86_64"
+          CIBW_BEFORE_BUILD_MANYLINUX: "pip install auditwheel"
 
       - uses: actions/upload-artifact@v4
         with:
