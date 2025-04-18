@@ -152,7 +152,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  deploy:
+  build:
     needs: semantic-release
     runs-on: ${{ matrix.os }}
     strategy:
@@ -217,7 +217,7 @@ jobs:
           path: "**/*.whl"
 
   publish:
-    needs: deploy
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -225,7 +225,18 @@ jobs:
       - name: Download all wheels
         uses: actions/download-artifact@v4
         with:
-          path: "**/*.whl"
+          path: wheels
+          merge-multiple: true
+
+      - name: Extract wheels
+        run: |
+          # Create a directory for extracted wheels
+          mkdir -p extracted_wheels
+
+          # Extract all wheels from the downloaded artifacts
+          for zip in wheels/*.zip; do
+            unzip -j "$zip" "*.whl" -d extracted_wheels/
+          done
 
       - name: Verify wheels
         run: |
@@ -234,7 +245,7 @@ jobs:
           source venv/bin/activate
 
           # Install each wheel and verify it works
-          for wheel in $(find . -name "*.whl"); do
+          for wheel in $(find extracted_wheels -name "*.whl"); do
             echo "Testing wheel: $wheel"
             pip install "$wheel"
             python -c "import stampix.auspostgen"
@@ -247,4 +258,4 @@ jobs:
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           repository-url: https://upload.pypi.org/legacy/
-          packages-dir: dist
+          packages-dir: extracted_wheels
