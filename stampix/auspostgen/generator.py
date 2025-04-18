@@ -69,17 +69,23 @@ def build_barcode(
         aus_post = CDLL(os.path.join(os.path.dirname(__file__), "_c", "auspost.so"))
         result = create_string_buffer(b"\000" * 67)
         fcc = create_string_buffer(b"\000" * 2)
-        fcc.value = str(fcc_value).encode("utf-8")
+        fcc.value = str(fcc_value).encode("ascii")  # Use ASCII for FCC
         dpid = create_string_buffer(b"\000" * 8)
-        dpid.value = dpid_str.encode("utf-8")
+        dpid.value = dpid_str.encode("ascii")  # Use ASCII for DPID
         customer = create_string_buffer(b"\000" * 10)
 
         if customer_value is not None:
-            customer.value = str(customer_value).encode("utf-8")
+            customer.value = str(customer_value).encode(
+                "ascii"
+            )  # Use ASCII for customer value
 
         length = c_int()
         aus_post.BuildBarcode(fcc, dpid, customer, result, byref(length))
-        return result.value.decode("utf-8")
+
+        # Get the raw bytes up to the length specified by the C function
+        raw_bytes = result.raw[: length.value]
+        # Convert to string, treating each byte as a character
+        return "".join(chr(b) for b in raw_bytes)
     except Exception as e:
         logger.error(f"Error generating barcode: {str(e)}")
         raise AusPostError(f"Failed to generate barcode: {str(e)}") from e
