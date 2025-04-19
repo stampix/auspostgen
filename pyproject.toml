@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "stampix-auspostgen"
-version = "0.0.7"
+version = "0.0.10"
 description = "Generation of the Australia Post Barcode versions 37, 52, 67"
 authors = ["Damian Dennis <damiandennis@gmail.com>", "Jaro Robberechts <jaro@stampix.com>"]
 readme = "README.md"
@@ -12,7 +12,7 @@ build-backend = "scikit_build_core.build"
 
 [project]
 name = "stampix-auspostgen"
-version = "0.0.7"
+version = "0.0.10"
 description = "Generation of the Australia Post Barcode versions 37, 52, 67"
 authors = [
     {name = "Damian Dennis", email = "damiandennis@gmail.com"},
@@ -37,13 +37,11 @@ version_variables = [
 branch = "main"
 upload_to_pypi = false
 upload_to_release = true
-build_command = "python -m pip wheel . -v"
 
 [tool.poetry.dependencies]
 python = "^3.10"
 pillow = "11.2.1"
 click = "8.1.8"
-pre-commit = "^4.2.0"
 
 [tool.poetry.scripts]
 auspostgen-image = "stampix.auspostgen:write_image"
@@ -60,13 +58,13 @@ wheel.install-dir = "stampix/auspostgen/_c"  # Install relative to the package r
 wheel.platlib = true  # Enable platform-specific library
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^7.4.0"
-black = "^23.7.0"
-isort = "^5.12.0"
-mypy = "^1.5.1"
-ruff = "^0.0.282"
+pytest = "^8.3.5"
+black = "^25.1.0"
+isort = "^6.0.1"
+mypy = "^1.15.0"
+ruff = "^0.11.6"
 pre-commit = "^4.2.0"
-python-semantic-release = "^8.0.0"
+python-semantic-release = "^9.21.0"
 
 [tool.black]
 line-length = 88
