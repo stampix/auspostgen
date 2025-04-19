@@ -162,9 +162,9 @@ jobs:
             python: 310
             platform_id: manylinux_aarch64
             manylinux_image: manylinux2014
-          - os: macos-13
+          - os: macos-14
             python: 310
-            platform_id: macosx_x86_64
+            platform_id: macosx_arm64
 
     steps:
       - uses: actions/checkout@v4
