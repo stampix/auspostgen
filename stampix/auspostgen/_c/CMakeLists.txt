@@ -5,7 +5,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 project(auspost)
 
 # Find Python
-find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
+find_package(Python3 COMPONENTS Interpreter Development.Module REQUIRED)
+
 
 # Set C standard
 set(CMAKE_C_STANDARD 11)
