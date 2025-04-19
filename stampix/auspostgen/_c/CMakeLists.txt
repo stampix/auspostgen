@@ -1,4 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
+
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 project(auspost)
 
 # Find Python
@@ -21,14 +24,6 @@ set_target_properties(auspost PROPERTIES
     PREFIX ""
     OUTPUT_NAME "auspost"
     SUFFIX ".so"
-)
-
-# Link against Python
-target_link_libraries(auspost PRIVATE Python3::Python)
-
-# Set include directories
-target_include_directories(auspost PRIVATE
-    ${Python3_INCLUDE_DIRS}
 )
 
 # Set compile definitions
