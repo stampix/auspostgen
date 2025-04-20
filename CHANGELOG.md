@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v0.0.12 (2025-04-20)
+
+### Bug Fixes
+
+- Remove build file & update readme
+  ([`25d576f`](https://github.com/stampix/auspostgen/commit/25d576f16da9a6827f3b476a076bab736cf6b0d9))
+
+### Testing
+
+- Update cases
+  ([`c1d339b`](https://github.com/stampix/auspostgen/commit/c1d339b969a91f7f7ff4fcc561c91239f719a39e))
+
+
 ## v0.0.11 (2025-04-19)
 
 ### Bug Fixes
