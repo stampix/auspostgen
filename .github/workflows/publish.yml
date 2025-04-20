@@ -120,6 +120,10 @@ jobs:
             python: 310
             platform_id: manylinux_aarch64
             manylinux_image: manylinux2014
+          - os: ubuntu-24.04-x86_64
+            python: 310
+            platform_id: manylinux_x86_64
+            manylinux_image: manylinux2014
           - os: macos-14
             python: 310
             platform_id: macosx_arm64
