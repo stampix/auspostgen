@@ -8,11 +8,17 @@ Makefile
 *.ninja_deps
 *.ninja_log
 
+# Binary files
+*.so
+*.dylib
+*.dll
+a.out
+*.exe
+
 # Python
 __pycache__/
 *.py[cod]
 *$py.class
-*.so
 .Python
 build/
 develop-eggs/

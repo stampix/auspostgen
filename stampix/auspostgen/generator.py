@@ -42,8 +42,8 @@ def build_barcode(
     Builds an Australia Post barcode based on the provided values.
 
     Args:
-        fcc_value: The FCC (Format Control Code) value. Must be one of "11", "59",
-            or "62".
+        fcc_value: The FCC (Format Control Code) value. Must be one of "11", "52",
+            or "67".
         dpid_value: The DPID (Delivery Point Identifier) value. Must be 8 digits.
         customer_value: Optional customer value. If provided, must be a string.
 
@@ -55,7 +55,7 @@ def build_barcode(
         InvalidDPIDError: If the DPID value is not 8 digits.
         AusPostError: For other barcode generation errors.
     """
-    fcc_values = ["11", "59", "62"]
+    fcc_values = ["11", "52", "67"]
     if str(fcc_value) not in fcc_values:
         raise InvalidFCCError(
             f"FCC [{fcc_value}] is not a supported Australia Post FCC type."
@@ -67,7 +67,7 @@ def build_barcode(
 
     try:
         aus_post = CDLL(os.path.join(os.path.dirname(__file__), "_c", "auspost.so"))
-        result = create_string_buffer(b"\000" * 67)
+        barcode = create_string_buffer(b"\x01" * 67)
         fcc = create_string_buffer(b"\000" * 2)
         fcc.value = str(fcc_value).encode("ascii")  # Use ASCII for FCC
         dpid = create_string_buffer(b"\000" * 8)
@@ -80,10 +80,10 @@ def build_barcode(
             )  # Use ASCII for customer value
 
         length = c_int()
-        aus_post.BuildBarcode(fcc, dpid, customer, result, byref(length))
+        aus_post.BuildBarcode(fcc, dpid, customer, barcode, byref(length))
 
         # Get the raw bytes up to the length specified by the C function
-        raw_bytes = result.raw[: length.value]
+        raw_bytes = barcode.raw[: length.value]
         # Convert to string, treating each byte as a character
         return "".join(chr(b) for b in raw_bytes)
     except Exception as e:
@@ -180,9 +180,9 @@ def write_barcode_to_image_base64(barcode: str) -> str:
 @click.option(
     "--fcc",
     prompt="Enter the FCC code",
-    type=click.Choice(["11", "59", "62"]),
+    type=click.Choice(["11", "52", "67"]),
     required=True,
-    help="Format Control Code (11, 59, or 62)",
+    help="Format Control Code (11, 52, or 67)",
 )
 @click.option(
     "--dpid",

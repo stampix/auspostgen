@@ -1,6 +1,6 @@
 # AusPostGen
 
-A Python library for generating Australia Post Barcode versions 37, 59, and 62.
+A Python library for generating Australia Post Barcode versions 37, 52, and 67.
 
 This is a fork off the auspostgen project by damiandennis maintained by Stampix.
 The goal of this fork was to make the package more modern and be usable in newer projects.
@@ -8,7 +8,7 @@ The goal of this fork was to make the package more modern and be usable in newer
 ## Features
 
 - Generate Australia Post barcodes in various formats
-- Support for versions 37, 59, and 62
+- Support for versions 37, 52, and 67
 - High-performance C extension for barcode generation
 - Simple Python API
 
