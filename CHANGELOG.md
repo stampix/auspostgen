@@ -1,12 +1,25 @@
 # CHANGELOG
 
 
+## v0.0.13 (2025-04-22)
+
+### Bug Fixes
+
+- Linux x86 wheel
+  ([`a125fab`](https://github.com/stampix/auspostgen/commit/a125fab5307c6d295778a6ea7a40d9a190ff2487))
+
+
 ## v0.0.12 (2025-04-20)
 
 ### Bug Fixes
 
 - Remove build file & update readme
   ([`25d576f`](https://github.com/stampix/auspostgen/commit/25d576f16da9a6827f3b476a076bab736cf6b0d9))
+
+### Continuous Integration
+
+- Add ubuntu x86 wheel
+  ([`268c26e`](https://github.com/stampix/auspostgen/commit/268c26e3f5dc240a28729ae10dbd4e35b8e1feac))
 
 ### Testing
 
